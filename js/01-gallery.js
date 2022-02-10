@@ -22,27 +22,25 @@ function createGalleryMarkup(galleryItems) {
                             alt="${description}"
                         />
                     </a>
-                </div >
-                `;
+                </div>`;
             })
         .join('');
 }
  
 
-function onGalleryContainerClick(evt) {
-    evt.preventDefault();
+function onGalleryContainerClick(event) {
+    event.preventDefault();
 
-    if (!evt.target.classList.contains('gallery__image')) {
+    if (!event.target.classList.contains('gallery__image')) {
         return;
     } 
     
-  modalShow(evt.target.dataset.source);
+  modalShow(event.target.dataset.source);
 }
 
 let instance;
 function modalShow(src) {
-  instance = basicLightbox.create(
-    `<img src="${src}"></img>`,
+  instance = basicLightbox.create( `<img src="${src}"></img>`,
     {
       onShow: instance => {
         addListener();
